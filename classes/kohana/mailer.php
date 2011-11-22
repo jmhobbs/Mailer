@@ -31,6 +31,12 @@ class Kohana_Mailer {
     protected $from = null;
 
     /**
+	* Reply to email
+	* @var string
+	*/
+    protected $reply_to = null;
+
+    /**
 	* Receipents mail
 	* @var string
 	*/
@@ -386,6 +392,11 @@ class Kohana_Mailer {
 
         // from
         $this->message->setFrom($this->from);
+
+				// reply to
+				if( $this->reply_to !== null ) {
+					$this->message->setReplyTo( $this->reply_to );
+				}
 
         return $this;
 	}
